@@ -44,8 +44,8 @@ class complex {
         return complex(a * rhs.a - b * rhs.b, a * rhs.b + b * rhs.a);
     }
     complex operator/(const complex &rhs) const {
+        if (std::fabs(rhs.a) < 1e-6 && std::fabs(rhs.b) < 1e-6) throw divided_by_zero();
         double den = rhs.a * rhs.a + rhs.b * rhs.b;
-        if (sign(den) == 0) throw divided_by_zero();
         return complex((a * rhs.a + b * rhs.b) / den, (b * rhs.a - a * rhs.b) / den);
     }
 
@@ -61,8 +61,8 @@ class complex {
         a = na; b = nb; return *this;
     }
     complex &operator/=(const complex &rhs) {
+        if (std::fabs(rhs.a) < 1e-6 && std::fabs(rhs.b) < 1e-6) throw divided_by_zero();
         double den = rhs.a * rhs.a + rhs.b * rhs.b;
-        if (sign(den) == 0) throw divided_by_zero();
         double na = (a * rhs.a + b * rhs.b) / den;
         double nb = (b * rhs.a - a * rhs.b) / den;
         a = na; b = nb; return *this;

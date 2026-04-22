@@ -1,0 +1,7 @@
+# Ignore local build artifacts
+/quickcheck
+/quickcheck.cpp
+/sample_build
+/sample_temp.cpp
+*.o
+*.out
